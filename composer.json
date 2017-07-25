@@ -1,0 +1,53 @@
+{
+    "name": "etobi/site_dev",
+    "type": "typo3-cms-extension",
+    "description": "Site Dev",
+    "keywords": [
+    ],
+    "homepage": "http://etobi.de",
+    "authors": [
+        {
+            "name": "Tobias Liebig",
+            "email": "work@etobi.de",
+            "role": "Developer",
+            "homepage": "http://etobi.de"
+        }
+    ],
+    "license": "GPL-2.0+",
+    "require": {
+        "typo3/cms-core": "^7.6"
+    },
+    "require-dev": {
+        "namelesscoder/typo3-repository-client": "^1.2",
+        "nimut/testing-framework": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+        }
+    },
+    "autoload-dev": {
+    },
+    "replace": {
+        "site_dev": "self.version",
+        "typo3-ter/site_dev": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "mkdir -p .Build/Web/typo3conf/ext/",
+            "[ -L .Build/Web/typo3conf/ext/site_dev ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/site_dev"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        },
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/Web"
+        }
+    }
+}
